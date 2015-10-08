@@ -66,11 +66,57 @@ nothing added to commit but untracked files present (use "git add" to track)
 	$
 	git add <filename>
 	#add files to staging area
+"	note: The *.txt~ files are gedits tempfiles ...we wont add those
+nathan@laptop:~/Desktop/gitNotes$ git add notesOnGit.txt
+nathan@laptop:~/Desktop/gitNotes$ git add gitreal/level1.txt
+nathan@laptop:~/Desktop/gitNotes$ git status
+On branch master
 
+Initial commit
 
- #Then we commit the changes which is like taking a snap shot of those files on the stage.
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   gitreal/level1.txt
+	new file:   notesOnGit.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	gitreal/level1.txt~
+	notesOnGit.txt~
+
+"
+
+ #Then we commit the changes which is like taking a snap shot of those files on the stage. Snap shot gets added to our timeline.
+	$
+	git commit -m "Description of Changes"
+"
+nathan@laptop:~/Desktop/gitNotes$ git commit -m "Added current notes"
+[master (root-commit) 21a7bb9] Added current notes
+ 2 files changed, 295 insertions(+)
+ create mode 100644 gitreal/level1.txt
+ create mode 100644 notesOnGit.txt
+"
+	git status
+	# On branch master #<- Master branch on timeline 
+	nothing to commit (working directory clean)
 
  #Then we can modify the files, add to staging area and commit changes.
+"
+I modified my level1.txt and git can track that
+
+nathan@laptop:~/Desktop/gitNotes$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   gitreal/level1.txt
+"
+	$
+	git add --all #adds all new or modified files to stage
+	git commit -m "Description of Changes"
 
  
  
