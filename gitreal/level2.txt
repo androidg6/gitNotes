@@ -1,0 +1,66 @@
+#begin level2.txt
+###################################################################
+#
+# Nathaniel Dielen
+# 10-7-2015
+#
+# Notes:
+# Using highlight mode sh in gedit. cuzImLazy
+#
+###################################################################
+
+## Terms
+
+## Quick notes
+
+## Some Commands
+
+ #git diff
+ $
+ git diff #show unstaged difference since last commit
+ git add gitreal/level2.txt
+ git diff --staged #view staged differences
+"
+nathan@laptop:~/Desktop/gitNotes$ git diff --staged
+diff --git a/gitreal/level2.txt b/gitreal/level2.txt
+new file mode 100644
+index 0000000..4df3345
+--- /dev/null
++++ b/gitreal/level2.txt
+@@ -0,0 +1,11 @@
+:...skipping...
+diff --git a/gitreal/level2.txt b/gitreal/level2.txt
+new file mode 100644
+index 0000000..4df3345
+--- /dev/null
++++ b/gitreal/level2.txt
+@@ -0,0 +1,11 @@
++#begin level2.txt
+:...skipping...
+diff --git a/gitreal/level2.txt b/gitreal/level2.txt
+new file mode 100644
+index 0000000..4df3345
+--- /dev/null
++++ b/gitreal/level2.txt
+@@ -0,0 +1,11 @@
++#begin level2.txt
++###################################################################
++#
++# Nathaniel Dielen
++# 10-7-2015
++#
++# Notes:
++# Using highlight mode sh in gedit. cuzImLazy
++#
++###################################################################
++
+"
+ #unstage/untrack
+ git reset HEAD gitreal/level2.txt #HEAD refers to the last commit
+ git checkout -- gitreal/level2.txt #blow away all changes since last commit ...im not doing this now for reasons
+ git commit -a -m "Description of Changes" #Add changes from all tracked files then commit them. Doesn't add new (untracked files)
+ 
+ 
+ 
+
+
