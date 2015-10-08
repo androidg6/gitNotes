@@ -13,6 +13,183 @@
 
 ## Quick notes
 
+ # Git Clone: $git clone <url> <name>
+    1- Downloads the entire repository into a new <name> directory.
+    2- Adds the 'origin' remote, pointing it to the clone URL.
+    3- Checks out initial branch (likely master) and sets the HEAD.
+
+ # Fast-Foward to the Future
+   Conditions _for a fast-foward merge
+   When we create a branch and _make one or several commits and _do nothing on the other branch its very easy _for git to merge the created branch with the master because nothing was modified to master _in the mean time.
+
+ # Non-Fast-Foward
+   Git cant fast-foward since changes were made in both branches.
+    
+
 ## Some Commands
 
+ $
+ git clone <url> <name> #get a copy of a remote repository 
+ git remote -v          #check it
+ git branch <name>      #branch out from the main timeline
+ git checkout <branch name> #move to a new branch
+ git merge <branch>      #merge a timeline into working timeline
+ git branch -d <branch> #delete branch
+ git checkout -b <branch> #creat and checkout a new branch
+
+
+
+# my $ tag along with video
+"
+nathan@laptop:~/Desktop$ git clone https://github.com/codeschool/git-real.git
+Cloning into 'git-real'...
+remote: Counting objects: 9, done.
+remote: Total 9 (delta 0), reused 0 (delta 0), pack-reused 9
+Unpacking objects: 100% (9/9), done.
+Checking connectivity... done.
+nathan@laptop:~/Desktop$ ls
+3ds                                                gitNotes  main.cpp~
+a.out                                              git-real  Robocraft.desktop
+▶ Game Development with SDL 2.0 - YouTube.desktop  main.cpp  roll
+nathan@laptop:~/Desktop$ cd git-real
+nathan@laptop:~/Desktop/git-real$ ls
+product.rb  README.txt  store.rb
+nathan@laptop:~/Desktop/git-real$ git remote -v
+origin	https://github.com/codeschool/git-real.git (fetch)
+origin	https://github.com/codeschool/git-real.git (push)
+nathan@laptop:~/Desktop/git-real$ git branch cat
+nathan@laptop:~/Desktop/git-real$ git branch
+  cat
+* master
+nathan@laptop:~/Desktop/git-real$ git checkout cat
+Switched to branch 'cat'
+nathan@laptop:~/Desktop/git-real$ echo "Schrodinger" > cat.txt
+nathan@laptop:~/Desktop/git-real$ git add cat.txt
+nathan@laptop:~/Desktop/git-real$ git commit -m "Create quantum cat."
+[cat 347a90b] Create quantum cat.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 cat.txt
+nathan@laptop:~/Desktop/git-real$ ls
+cat.txt  product.rb  README.txt  store.rb
+nathan@laptop:~/Desktop/git-real$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+nathan@laptop:~/Desktop/git-real$ ls
+product.rb  README.txt  store.rb
+nathan@laptop:~/Desktop/git-real$ git log
+commit b8b7c836b71573e262b856f6db60b2c7daf54522
+Author: Adam Fortuna <adam@fortuna.name>
+Date:   Thu Jun 28 14:32:47 2012 -0400
+
+:...skipping...
+commit b8b7c836b71573e262b856f6db60b2c7daf54522
+Author: Adam Fortuna <adam@fortuna.name>
+Date:   Thu Jun 28 14:32:47 2012 -0400
+
+    Updated the readme.
+:...skipping...
+commit b8b7c836b71573e262b856f6db60b2c7daf54522
+Author: Adam Fortuna <adam@fortuna.name>
+Date:   Thu Jun 28 14:32:47 2012 -0400
+
+    Updated the readme.
+
+commit b2cb39449ea96fd4f93252560fb02e2d8b4a1a51
+Author: Adam Fortuna <adam@fortuna.name>
+Date:   Thu Jun 28 14:31:17 2012 -0400
+
+    Prototype of the store and product models.
+
+commit a386fe107761e20ec5dd26e7927185fae28c0b15
+Author: Adam Fortuna <adam@fortuna.name>
+Date:   Thu Jun 28 14:29:33 2012 -0400
+
+    Created a README and updated the commit message.
+~
+nathan@laptop:~/Desktop/git-real$ git checkout cat
+Switched to branch 'cat'
+nathan@laptop:~/Desktop/git-real$ ls
+cat.txt  product.rb  README.txt  store.rb
+nathan@laptop:~/Desktop/git-real$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+nathan@laptop:~/Desktop/git-real$ ls
+product.rb  README.txt  store.rb
+nathan@laptop:~/Desktop/git-real$ git merge cat
+Updating b8b7c83..347a90b
+Fast-forward
+ cat.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 cat.txt
+nathan@laptop:~/Desktop/git-real$ ls
+cat.txt  product.rb  README.txt  store.rb
+nathan@laptop:~/Desktop/git-real$ git branch -d cat
+Deleted branch cat (was 347a90b).
+nathan@laptop:~/Desktop/git-real$ git checkout -b admin
+Switched to a new branch 'admin'
+nathan@laptop:~/Desktop/git-real$ git status
+On branch admin
+nothing to commit, working directory clean
+nathan@laptop:~/Desktop/git-real$ mkdir admin
+nathan@laptop:~/Desktop/git-real$ ls
+admin  cat.txt  product.rb  README.txt  store.rb
+nathan@laptop:~/Desktop/git-real$ echo "html" > admin/dashboard.html
+nathan@laptop:~/Desktop/git-real$ git status
+On branch admin
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	admin/
+
+nothing added to commit but untracked files present (use "git add" to track)
+nathan@laptop:~/Desktop/git-real$ git add admin/dashboard.html
+nathan@laptop:~/Desktop/git-real$ git commit -m 'add dashboard'
+[admin 37fa927] add dashboard
+ 1 file changed, 1 insertion(+)
+ create mode 100644 admin/dashboard.html
+nathan@laptop:~/Desktop/git-real$ echo "users" > admin/users.html
+nathan@laptop:~/Desktop/git-real$ git add admin/users.html
+nathan@laptop:~/Desktop/git-real$ git commit -m 'Add user admin'
+[admin a7cf90a] Add user admin
+ 1 file changed, 1 insertion(+)
+ create mode 100644 admin/users.html
+nathan@laptop:~/Desktop/git-real$ git checkout master
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nathan@laptop:~/Desktop/git-real$ git branch
+  admin
+* master
+nathan@laptop:~/Desktop/git-real$ git pull
+Already up-to-date.
+nathan@laptop:~/Desktop/git-real$ git add store.rb
+nathan@laptop:~/Desktop/git-real$ git commit -m 'Fix store bug'
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+nathan@laptop:~/Desktop/git-real$ git add product.rb
+nathan@laptop:~/Desktop/git-real$ git commit -m 'Fix product'
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working directory clean
+nathan@laptop:~/Desktop/git-real$ git push
+nathan@laptop:~/Desktop/git-real$ git checkout master
+Switched to branch 'master'
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nathan@laptop:~/Desktop/git-real$ git merge admin
+Updating 347a90b..a7cf90a
+Fast-forward
+ admin/dashboard.html | 1 +
+ admin/users.html     | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 admin/dashboard.html
+ create mode 100644 admin/users.html
+"
+
 #end level3.txt
+
