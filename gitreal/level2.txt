@@ -74,8 +74,27 @@ nathan@laptop:~/Desktop/gitNotes$ git commit -a -m "Updated files"
  creat a github account and repo
  then
  $
- git remote add origin https://github.com/androidg6/gitNotes.git
- git push -u origin master
+ git remote add origin https://github.com/androidg6/gitNotes.git #add remote repo
+ git push -u origin master                                       #update remote repo
+ git remote -v                                                   #get a list of all the remote repos git knows about
+ git pull                                                        #Pull changes from remote
+ git remote add <name> <url>                                     #Add new remotes
+ git remote rm <name>                                            #Remove remotes
+ git push -u <name> <branch>                                     #Push to remotes
+
+## heroku notes: heroku automatically adds a remote named heroku to git
+ $
+ heroku create #create heroku server
+ git remote -v
+ git push heroku master 
+
+DO NOT AFTER PUSH!!!!!!
+git reset
+git commit --amend
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#end level2.txt
+
   
  
 
