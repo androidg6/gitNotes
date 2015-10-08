@@ -5,6 +5,7 @@
 # 10-7-2015
 #
 # Notes:
+# Using highlight mode sh in gedit. cuzImLazy
 #
 ###################################################################
 
@@ -117,12 +118,53 @@ Changes not staged for commit:
 	$
 	git add --all #adds all new or modified files to stage
 	git commit -m "Description of Changes"
+"
+nathan@laptop:~/Desktop/gitNotes$ git commit -m "Updated level1.txt"
+[master 27d5171] Updated level1.txt
+ 1 file changed, 47 insertions(+), 1 deletion(-)
+"
 
- 
- 
+## Git Timeline History
+ $
+ git log
+"
+nathan@laptop:~/Desktop/gitNotes$ git log
+commit 27d517161a043dcbb26f4ed9464e6371f82a5f37
+Author: android_g6 <nathan.dielen@gmail.com>
+Date:   Wed Oct 7 21:29:05 2015 -0500
 
- 
+    Updated level1.txt
+
+:...skipping...
+commit 27d517161a043dcbb26f4ed9464e6371f82a5f37
+Author: android_g6 <nathan.dielen@gmail.com>
+Date:   Wed Oct 7 21:29:05 2015 -0500
+
+    Updated level1.txt
+
+commit 21a7bb9382c734c6559049da122c6ff2e6cdfc4b
+:...skipping...
+commit 27d517161a043dcbb26f4ed9464e6371f82a5f37
+Author: android_g6 <nathan.dielen@gmail.com>
+Date:   Wed Oct 7 21:29:05 2015 -0500
+
+    Updated level1.txt
+
+commit 21a7bb9382c734c6559049da122c6ff2e6cdfc4b
+Author: android_g6 <nathan.dielen@gmail.com>
+Date:   Wed Oct 7 21:08:43 2015 -0500
+
+    Added current notes
+"
+## Different Ways to Add
+ $
+ git add <list of files> #add the list of files
+ git add --all           #add all files
+ git add *.txt           #add all txt files in current directory
+ git add docs/*.txt      #add all txt files in docs directory
+ git add docs            #add all files in docs directory
+ git add "*.txt"         #add all txt files in the whole project
 
 
-
+#end level1.txt
 
