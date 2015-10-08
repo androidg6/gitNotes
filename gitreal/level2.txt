@@ -59,8 +59,24 @@ index 0000000..4df3345
  git reset HEAD gitreal/level2.txt #HEAD refers to the last commit
  git checkout -- gitreal/level2.txt #blow away all changes since last commit ...im not doing this now for reasons
  git commit -a -m "Description of Changes" #Add changes from all tracked files then commit them. Doesn't add new (untracked files)
- 
- 
+"
+nathan@laptop:~/Desktop/gitNotes$ git commit -a -m "Updated files"
+[master 67b35c4] Updated files
+ 1 file changed, 66 insertions(+)
+ create mode 100644 gitreal/level2.txt
+"
+ git reset --soft HEAD^ #Reset into staging. Move to commit before 'HEAD'
+ git commit --amend -m "Description of Changes" #add to the last commit
+ git reset --hard HEAD^ #Undo last commit and all changes
+ git reset --hard HEAD^^ #Undo last 2 commits and all changes
+
+## How to share
+ creat a github account and repo
+ then
+ $
+ git remote add origin https://github.com/androidg6/gitNotes.git
+ git push -u origin master
+  
  
 
 
