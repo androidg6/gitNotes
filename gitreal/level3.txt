@@ -1,0 +1,18 @@
+#begin level3.txt
+###################################################################
+#
+# Nathaniel Dielen
+# 10-8-2015
+#
+# Notes:
+# Using highlight mode sh in gedit. cuzImLazy
+#
+###################################################################
+
+## Terms
+
+## Quick notes
+
+## Some Commands
+
+#end level3.txt
