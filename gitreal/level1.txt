@@ -1,0 +1,82 @@
+#begin level1.txt
+###################################################################
+#
+# Nathaniel Dielen
+# 10-7-2015
+#
+# Notes:
+#
+###################################################################
+
+##Terms:
+DISTRIBUTED VERSION CONTROL SYSTEM(DVCS)= Everyone has there own copy of the repository which they can 'commit' changes and update to to main master repository. 
+
+## Quick Notes:
+ Git is a DISTRIBUTED VERSION CONTROL SYSTEM. Created by (mispelled) Lenose Torvolds when he was working on the linux os and he lost access to the control system he was working on. He wanted to creat somthing new. Somthing fast and was meant to be distributed and was capable of handling large projects like linux.
+ Git is a command line interface. There are many gui tools available.
+ Offical site # http://git-scm.com
+
+## Some Commands
+
+#git help <command>
+Type to get help on a git command.
+#git config 
+Config git
+
+##Setting up git
+$
+ git config --global user.name "android_g6" #who gets credit for changes
+ git config --global user.email nathan.dielen@gmail.com #what email you use
+ git config --global color.ui true #hehe pretty colors
+
+##Starting a repo
+$
+ mkdir store #make a directory in this case named store
+ cd store #go to the store directory
+ git init #creates a local git repo
+
+#git metadata is stored in /home/nathan/Desktop/gitNotes/.git/
+" 
+nathan@laptop:~/Desktop/gitNotes$ git init
+Initialized empty Git repository in /home/nathan/Desktop/gitNotes/.git/
+"
+
+##Git Work Flow
+ #When we create a file it starts out as untracked.
+	$
+	git status
+        #check what is changed since last commit
+"	note: I added my notes to the folder but have not commited them so they show up as untracked.
+
+nathan@laptop:~/Desktop/gitNotes$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	gitreal/
+	notesOnGit.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+"
+
+ #Then we add the file to a staging area. We are getting ready to take a snap shot of the file.
+	$
+	git add <filename>
+	#add files to staging area
+
+
+ #Then we commit the changes which is like taking a snap shot of those files on the stage.
+
+ #Then we can modify the files, add to staging area and commit changes.
+
+ 
+ 
+
+ 
+
+
+
+

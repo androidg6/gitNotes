@@ -1,0 +1,213 @@
+#begin notesOnGit.txt
+#########################################################################################################
+# Notes on using Git
+#
+# Nathaniel Dielen
+# 10-7-2015
+#
+# Notes: 
+# Using highlight mode sh in gedit. cuzImLazy
+# Later look @ Hooks. http://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
+# Later look @ https://schacon.github.io/gitbook/1_the_git_object_model.html
+# 
+# More info and stuff @ http://git-scm.com/docs http://git-scm.com/book/en/v2 https://help.github.com/
+#
+#########################################################################################################
+
+## Terms
+Staging_Area= A place where we can group files together before we "commit" them to Git.
+
+Commit= A "commit" is a snapshot of our repository. This way if we ever need to look back at the changes we have made (or if someone else does), we will see a nice timeline of all the changes.
+
+staged= Files are ready to be committed.
+
+unstaged= Files with changes that have not been prepared to be committed.
+
+untracked= Files are not tracked by Git yet. This usually indicates a newly created file.
+
+deleted= File has been deleted and is waiting to be removed from Git.
+
+Git_Hooks= Like many other Version Control Systems, Git has a way to fire off custom scripts when certain important actions occur. There are two groups of these hooks= client-side and server-side. Client-side hooks are triggered by operations such as committing and merging, while server-side hooks run on network operations such as receiving pushed commits.
+
+HEAD= The HEAD is a pointer that holds your position within all your different commits. By default HEAD points to your most recent commit, so it can be used as a quick way to reference that commit without having to look up the SHA.
+
+SHA= From: # https://schacon.github.io/gitbook/1_the_git_object_model.html
+"
+All the information needed to represent the history of a project is stored in files referenced by a 40-digit "object name" that looks something like this:
+
+6ff87c4664981e4397625791c8ea3bbb5f2279a3
+
+You will see these 40-character strings all over the place in Git. In each case the name is calculated by taking the SHA1 hash of the contents of the object. The SHA1 hash is a cryptographic hash function. What that means to us is that it is virtually impossible to find two different objects with the same name. This has a number of advantages; among others:
+
+    Git can quickly determine whether two objects are identical or not, just by comparing names.
+    Since object names are computed the same way in every repository, the same content stored in two repositories will always be stored under the same name.
+    Git can detect errors when it reads an object, by checking that the objects name is still the SHA1 hash of its contents.
+"
+
+Branch= 
+"
+Branches are what naturally happens when you want to work on multiple features at the same time. You wouldnt want to end up with a master branch which has Feature A half done and Feature B half done.
+
+Rather youd separate the code base into two "snapshots" (branches) and work on and commit to them separately. As soon as one was ready, you might merge this branch back into the master branch and push it to the remote server.
+"
+Pull_Requests= 
+"
+If you're hosting your repo on GitHub, you can do something called a pull request.
+
+A pull request allows the boss of the project to look through your changes and make comments before deciding to merge in the change. It's a really great feature that is used all the time for remote workers and open-source projects.
+
+Check out the pull request help page for more information.
+" #https://help.github.com/articles/using-pull-requests/
+
+## Tracking files
+If git says <filename> is untracked it usually means that the <filename> is a new file. 
+
+# git init
+Type git init to initialize a Git repository.
+
+# git status
+Type git status to check the current state of our project.
+
+# git add <filename>
+Tell git to start tracking changes made to <filename> 
+
+# git add -A
+The -A ensures even file deletions are included in the staging area.
+
+# git add '*.txt'
+You can use a wildcard * (with '') to add multiple files of the same type to the staging area. 
+
+# git reset <filename> 
+Type git reset <filename> to remove a file or files from the staging area.
+
+# git commit -m "Describtion of what has changed"
+Type git commit -m "Describtion of what has changed" to store changes in our repository.
+
+# git log 
+Type git log to see all the changes we committed so far in the order that they were committed.
+
+# git log --summary
+Type git log --summary to see a more detailed information on the changes that were committed.
+
+# git remote add <remoteName> <url>
+Type git remote add <remoteName> <url> to add a remote name to a repository. Its good practice to name our main repository 'origin'. 'git remote add orgin https://github.com/try-git/try_git.git'
+
+# git push -u <remote> <local>
+Type git push -u <remote> <local> to 'push' our <local> changes to our <remote> repository. 'git push -u origin master'. The '-u' flag tells Git to remember the parameters, so that next time we can simply run 'git push'.
+
+# git pull <remote> <local>
+Type git pull <remote> <local> to check and pull _for any changes from our <remote> repository. 'git pull origin master'
+
+# git stash
+Type get stash to stash changes.
+
+# git stash apply
+Type get stash apply to re-apply your changes after your pull.
+
+# git diff <pointer>
+Type get diff <pointer> to look at what is different from our last commit. To see the diff of our most recent commit use the HEAD pointer. 'git diff HEAD'
+"
+Commit Etiquette:
+You want to try to keep related changes together in separate commits. Using git diff gives you a good overview of changes you have made and lets you add files or directories one at a time and commit them separately.
+"
+# git diff --staged
+Type git diff --staged to see changes you just staged.
+
+# git checkout -- <target> 
+Type git checkout -- <target> to change back to how things were at the last commit. We use the '--' incase we happen to have a branch of the same name as the file. '--' will revert to the file, instead of switching to the branch of the same name.
+
+# git checkout <branch>
+Type git checkout <branch> to switch branches.
+
+# git branch <branchName>
+Type git branch <branchName> to create a branch.
+
+# git branch -d <branchName>
+Type git branch -d <branchName> to delete a branch.
+"
+Force delete
+
+What if you have been working on a feature branch and you decide you really don't want this feature anymore? You might decide to delete the branch since you're scrapping the idea. You'll notice that git branch -d bad_feature doesn't work. This is because -d won't let you delete something that hasn't been merged.
+
+You can either add the --force (-f) option or use -D which combines -d -f together into one command.
+"
+
+# git checkout -b <new_branch>
+Type git checkout -b <new_branch> to checkout and create a branch at the same time.
+
+# git rm <filename> , git rm '*.txt'
+Type git rm <filename> to remove files from the disk and also stage to removal of the file _for us. Use 'git rm -r <directory>' to remove all folders and files recursively from a givin directory.
+"
+The -a option
+
+If you happen to delete a file without using git rm youll find that you still have to git rm the deleted files from the working tree. You can save this step by using the -a option on git commit, which auto removes deleted files with the commit.
+
+git commit -am "Delete stuff"
+"
+
+# git merge <branch>
+Type git merge <branch> to merge the branch your in with another <branch>
+"
+Merge Conflicts
+
+Merge Conflicts can occur when changes are made to a file at the same time. A lot of people get really scared when a conflict happens, but fear not! They aren't that scary, you just need to decide which code to keep.
+" #http://git-scm.com/docs/git-merge#_how_conflicts_are_presented
+
+#Example from tryGit https://www.codeschool.com/courses/try-git
+"
+Press enter to submit commands
+
+> git init
+
+$ git status
+
+$ git status
+
+$ git add octocat.txt
+
+$ git status
+
+$ git commit -m "Add cute octocat story"
+
+$ git add '*.txt'
+
+$ git commit -m 'Add all the octocat txt files'
+
+$ git log
+
+$ git remote add origin https://github.com/try-git/try_git.git
+
+$ git push -u origin master
+
+$ git pull origin master
+
+$ git diff HEAD
+
+$ git add octofamily/octodog.txt
+
+$ git diff --staged
+
+$ git reset octofamily/octodog.txt
+
+$ git checkout -- octocat.txt
+
+$ git branch clean_up
+
+$ git checkout clean_up
+
+$ git rm '*.txt'
+
+$ git commit -m "Remove all the cats"
+
+$ git checkout master
+
+$ git merge clean_up
+
+$ git branch -d clean_up
+
+$ git push
+
+> 
+"
+
+#end notesOnGit.txt
