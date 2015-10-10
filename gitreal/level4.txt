@@ -1,0 +1,27 @@
+#begin level4.txt
+###################################################################
+#
+# Nathaniel Dielen
+# 10-9-2015
+#
+# Notes:
+# Using highlight mode sh in gedit. cuzImLazy
+#
+###################################################################
+
+## Terms
+
+## Quick notes
+ If someone pushes a branch that is behind the current branch that push will be rejected. To fix this one can pull then push again. 
+ If we have two different commits that are on the same file. We will get a merge conflict in said file. The file will have both versions. We would have to manualy fix the file and recommit and push.
+
+## Some Commands
+ # Understanding pull
+ $git pull
+ 1. Fetch (or Sync) our local repository with the remote one 
+  $git fetch
+  Fetch doesnt actually update any of our local code.
+ 2. Merges the origin/master with master
+  $git merge origin/master
+#end level4.txt
+
