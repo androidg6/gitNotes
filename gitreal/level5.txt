@@ -8,7 +8,7 @@
 # Using highlight mode sh in gedit. cuzImLazy
 #
 ###################################################################
-
+ $git fetch # fetch a the remote copy
  # Remote_Branch= Back up branch basically a secound branch
 	# You use a remote branch when
 		You need other people to work on your branch.
