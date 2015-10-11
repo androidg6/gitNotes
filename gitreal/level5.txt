@@ -1,0 +1,52 @@
+#begin level5.txt
+###################################################################
+#
+# Nathaniel Dielen
+# 10-10-2015
+#
+# Notes:
+# Using highlight mode sh in gedit. cuzImLazy
+#
+###################################################################
+
+ # Remote_Branch= Back up branch basically a secound branch
+	# You use a remote branch when
+		You need other people to work on your branch.
+		When there is any branch lasting more then a day.
+	$git checkout -b <remote branch>
+        $git push origin <remote branch>
+	$git add <file>
+	$git push ## will push to remote branch..
+                   ## git allways pushes towards the branch your checking out?
+	
+You can access your branches on github in the top left corner by clicking branch.
+	
+	$git <branch> #will get all branches
+        $git <branch> -r #will list all the remote branches
+        $git checkout <remote branch> # automacticly setup as a tracking remote branch
+
+	$git remote show orgin 
+		Shows all the remote branches, all the _local branches configured _for git pull, and _local refs configured _for git push. Also checks the server to see whichs branches are out of date.
+ # Remove a Branch
+	$git push origin :<remote branch> #Deletes remote branch
+
+	$git branch -d <local branch> #Will return an error when not full merged with remote.
+	$git branch -D <local branch> #Deletes local branch
+
+	$git remote prune origin #clean up deleted remote branches
+
+##### Heroku only deploys master branch ######
+	$git push heroku-staging <remote> #would not work, would push to staging
+	$git push heroku-staging <reomote>:master #will push and deploy staging on heroku.
+
+##### Tags are a references to a certian commit (version)
+   $git tag #list all tags
+   $git checkout <tags> #check out the files at that commit
+
+   $git tag -a <tag name> -m "message" # add a new tag
+   $git push --tags #push new tags
+ 
+   Tags are next to the branches tab on github.
+
+#end level5.txt
+
