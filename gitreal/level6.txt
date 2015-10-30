@@ -28,8 +28,6 @@ $git rebase #Move all changes to master which are not in origin/master to a temp
 	$git rebase --continue #when the conflict is resolved
 	$git rebase --skip #skip patch/conflict
 	$git rebase -- abort #check out the original branch and stop rebasing run
-gitr
-
 
 #end level6.txt
 
