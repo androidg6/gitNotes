@@ -21,8 +21,8 @@
 	
 You can access your branches on github in the top left corner by clicking branch.
 	
-	$git <branch> #will get all branches
-        $git <branch> -r #will list all the remote branches
+	$git branch #will get all branches
+        $git branch -r #will list all the remote branches
         $git checkout <remote branch> # automacticly setup as a tracking remote branch
 
 	$git remote show orgin 

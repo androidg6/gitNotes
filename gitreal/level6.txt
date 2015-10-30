@@ -1,0 +1,35 @@
+#begin level6.txt
+###################################################################
+#
+# Nathaniel Dielen
+# 10-30-2015
+#
+# Notes:
+# Using highlight mode sh in gedit. cuzImLazy
+#
+###################################################################
+ 
+#ALLYOURREBASEAREBELONGTOUS
+Merge commits are bad. They can pollute history. They feel useless.
+There is an alternative. Rebase.
+
+$git fetch #pulls down anychanges but doesn't merge them
+
+$git rebase #Move all changes to master which are not in origin/master to a temporary area.
+            #Run all origin/master commits one at a time.
+            #Run all commits in the temporary area, one at a time.
+            #No merge commits
+#Rebase instead of merge
+	$git checkout admin
+	$git rebase master
+	$git checkout master
+	$git merge admin
+#conflicts
+	$git rebase --continue #when the conflict is resolved
+	$git rebase --skip #skip patch/conflict
+	$git rebase -- abort #check out the original branch and stop rebasing run
+gitr
+
+
+#end level6.txt
+
